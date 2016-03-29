@@ -81,7 +81,7 @@ function smart_wrap(text, width)
     prepare_words(words, width, function (path)
         combine([], path, function (combination)
             score = 0
-            for line in combination
+            for line in combination[1:length(combination)-1]
                 score += (width - length(line))^2
             end
 
