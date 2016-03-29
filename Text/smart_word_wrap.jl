@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/julia
 
 # Author: Daniel "Trizen" Șuteu
 # License: GPLv3
