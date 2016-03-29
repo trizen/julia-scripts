@@ -73,7 +73,7 @@ function smart_wrap(text, width)
 
     words = isa(text, AbstractString) ? split(text) : text
 
-    best = Dict{AbstractString, Any}(
+    best = Dict{ASCIIString, Any}(
         "score" => Inf,
         "value" => [],
     )
@@ -115,4 +115,9 @@ println(smart_wrap(text, 20))
 println("-" ^ 80)
 
 text = "Lorem ipsum dolor ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ amet, consectetur adipiscing elit."
+println(smart_wrap(text, 20))
+
+println("-" ^ 80)
+
+text = "Will Perl6 also be pre-installed on future Mac/Linux operating systems? ... I can\'t predict the success of the project...";
 println(smart_wrap(text, 20))
