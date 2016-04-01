@@ -43,7 +43,7 @@ end
 for i in 1:100
 
     maxIter = 50
-    c = Complex(-2 * rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
+    c = Complex(-rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
 
     for x in 1:w
         for y in 1:h
