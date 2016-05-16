@@ -11,6 +11,11 @@
 using Images
 
 w, h = 800, 600
+
+zoom = 1
+moveX = 0
+moveY = 0
+
 img = Array(UInt8, h, w, 3)
 
 function hsv2rgb(h, s, v)
@@ -48,7 +53,10 @@ for i in 1:100
     for x in 1:w
         for y in 1:h
             i = maxIter
-            z = Complex((x - w/2) / w * 3, (y - h/2) / h * 2)
+            z = Complex(
+                3/2 * (2*x - w) / (w * zoom) + moveX,
+                      (2*y - h) / (h * zoom) + moveY
+            )
             while abs(z) < 2 && (i -= 1) > 0
                 z = z*z + c
             end
@@ -60,5 +68,5 @@ for i in 1:100
     end
 
     println("Generating image...")
-    save("$c.png", colorim(img, "RGB"))
+    save("$c-$zoom.png", colorim(img, "RGB"))
 end
