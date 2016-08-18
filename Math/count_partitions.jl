@@ -10,9 +10,9 @@
 # See also: https://oeis.org/A000041
 #           https://en.wikipedia.org/wiki/Partition_(number_theory)
 
-function count_partitions(x)
+function count_partitions(x::Int64)
     n = 2
-    p = [1]
+    p = Int64[1]
 
     while (n <= x+1)
         i = 0
