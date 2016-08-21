@@ -1,12 +1,10 @@
 #!/usr/bin/julia
 
-# Author: Daniel "Trizen" Șuteu
-# License: GPLv3
 # Date: 21 August 2016
 # Website: https://github.com/trizen
 
 # An efficient algorithm for computing factorial of a large number, modulus a larger number.
-# See: http://stackoverflow.com/questions/9727962/fast-way-to-calculate-n-mod-m-where-m-is-prime
+# Algorithm from: http://stackoverflow.com/questions/9727962/fast-way-to-calculate-n-mod-m-where-m-is-prime
 
 function facmod(n::Int64, mod::Int64)
 

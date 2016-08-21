@@ -10,5 +10,6 @@ Small programs written in Julia.
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
     * [Modular factorial](./Math/modular_factorial.jl)
+    * [Modular fibonacci](./Math/modular_fibonacci.jl)
 * Text
     * [Smart word wrap](./Text/smart_word_wrap.jl)
