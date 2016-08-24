@@ -12,11 +12,11 @@
 
 function partitions_count(n::Int64, cache::Dict{Int,Int})
 
+    n <= 1 && return n
+
     if haskey(cache, n)
         return cache[n]
     end
-
-    n <= 1 && return n
 
     sum_1 = 0
     for i in 1:Int64(floor((sqrt(24*n + 1) + 1)/6))
