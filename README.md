@@ -12,5 +12,6 @@ Small programs written in Julia.
     * [Modular factorial](./Math/modular_factorial.jl)
     * [Modular fibonacci](./Math/modular_fibonacci.jl)
     * [Modular hyperoperation](./Math/modular_hyperoperation.jl)
+    * [Smarandache function](./Math/smarandache_function.jl)
 * Text
     * [Smart word wrap](./Text/smart_word_wrap.jl)
