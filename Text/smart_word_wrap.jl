@@ -25,7 +25,7 @@ function prepare_words(array, width, callback, depth=0)
                     len -= word_len
                     value = array[i]
                     a = matchall(Regex(".{1,$width}"), value)
-                    splice!(array, i, map(x -> convert(ASCIIString, x), a))
+                    splice!(array, i, map(x -> convert(String, x), a))
                     limit = length(array)
                     i -= 1
                     continue
@@ -73,7 +73,7 @@ function smart_wrap(text, width)
 
     words = isa(text, AbstractString) ? split(text) : text
 
-    best = Dict{ASCIIString, Any}(
+    best = Dict{String, Any}(
         "score" => Inf,
         "value" => [],
     )

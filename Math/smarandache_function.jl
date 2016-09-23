@@ -15,6 +15,8 @@
 # ∑S(i) for 2 ≤ i ≤ 10^6 == 64938007616
 # ∑S(i) for 2 ≤ i ≤ 10^8 == 476001479068717
 
+using Primes
+
 function smarandache(n::Int64, cache)
 
     isprime(n) && return n
