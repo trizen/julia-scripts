@@ -7,6 +7,7 @@ Small programs written in Julia.
 * Image
     * [Julia sets](./Image/julia_sets.jl)
 * Math
+    * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
     * [Modular factorial](./Math/modular_factorial.jl)
