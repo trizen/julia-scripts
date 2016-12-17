@@ -41,9 +41,9 @@ end
 
 function generate(n::Int64)
 
-    w, h = 800, 600
+    w, h = 1000, 1000
 
-    zoom = 1
+    zoom  = 0.5
     moveX = 0
     moveY = 0
 
@@ -58,8 +58,8 @@ function generate(n::Int64)
             for y in 1:h
                 i = maxIter
                 z = Complex(
-                    3/2 * (2*x - w) / (w * zoom) + moveX,
-                          (2*y - h) / (h * zoom) + moveY
+                    (2*x - w) / (w * zoom) + moveX,
+                    (2*y - h) / (h * zoom) + moveY
                 )
                 while abs(z) < 2 && (i -= 1) > 0
                     z = z*z + c
