@@ -5,8 +5,10 @@
 # Date: 27 March 2016
 # Website: https://github.com/trizen
 
-# Generate 100 random Julia sets as PNG images.
-# See also: https://en.wikipedia.org/wiki/Julia_set
+# Generate n random Julia sets as PNG images.
+
+# See also:
+#    https://en.wikipedia.org/wiki/Julia_set
 
 using Images
 
@@ -37,7 +39,7 @@ function hsv2rgb(h, s, v)
     r,b,g
 end
 
-function generate()
+function generate(n::Int64)
 
     w, h = 800, 600
 
@@ -47,7 +49,7 @@ function generate()
 
     img = Array(UInt8, h, w, 3)
 
-    for i in 1:100
+    for i in 1:n
 
         maxIter = 50
         c = Complex(-rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
@@ -74,4 +76,4 @@ function generate()
     end
 end
 
-generate()
+generate(100)
