@@ -67,7 +67,7 @@ function mandelbrot()
             )
             z = c
             n = 0
-            while ((n += 1) < I && abs(z) < L)
+            while (abs(z) < L && (n += 1) < I)
                 z = z^f(c)
             end
             const v = (I - n) / I
