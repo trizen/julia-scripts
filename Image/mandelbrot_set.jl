@@ -17,7 +17,7 @@ using Images
     const x = c * (1 - abs(((h/60) % 2) - 1))
     const m = v - c
 
-    r,g,b =
+    const r,g,b =
         if h < 60
             (c, x, 0)
         elseif h < 120
