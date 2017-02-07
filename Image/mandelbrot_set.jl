@@ -32,11 +32,7 @@ using Images
             (c, 0, x)
         end
 
-    const r = round(UInt8, (r + m) * 255)
-    const g = round(UInt8, (g + m) * 255)
-    const b = round(UInt8, (b + m) * 255)
-
-    r,b,g
+    (r + m), (b + m), (g + m)
 end
 
 function mandelbrot()
@@ -47,7 +43,7 @@ function mandelbrot()
     const moveX = 0
     const moveY = 0
 
-    const img = Array(UInt8, h, w, 3)
+    const img = Array(RGB{Float64}, h, w)
     const maxIter = 100
 
     for x in 1:w
@@ -62,14 +58,12 @@ function mandelbrot()
                 z = z^2 + c
             end
             const r,g,b = hsv2rgb(i / maxIter * 360, 1, i / maxIter)
-            img[y,x,1] = r
-            img[y,x,2] = g
-            img[y,x,3] = b
+            img[y,x] = RGB{Float64}(r, g, b)
         end
     end
 
     println("Generating image...")
-    save("$zoom.png", colorim(img, "RGB"))
+    save("$zoom.png", img)
 end
 
 mandelbrot()

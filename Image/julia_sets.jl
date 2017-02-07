@@ -12,10 +12,10 @@
 
 using Images
 
-function hsv2rgb(h, s, v)
-    c = v * s
-    x = c * (1 - abs(((h/60) % 2) - 1))
-    m = v - c
+@inline function hsv2rgb(h, s, v)
+    const c = v * s
+    const x = c * (1 - abs(((h/60) % 2) - 1))
+    const m = v - c
 
     r,g,b =
         if h < 60
@@ -32,27 +32,23 @@ function hsv2rgb(h, s, v)
             (c, 0, x)
         end
 
-    r = round(UInt8, (r + m) * 255)
-    g = round(UInt8, (g + m) * 255)
-    b = round(UInt8, (b + m) * 255)
-
-    r,b,g
+    (r + m), (b + m), (g + m)
 end
 
 function generate(n::Int64)
 
-    w, h = 1000, 1000
+    const w, h = 1000, 1000
 
-    zoom  = 0.5
-    moveX = 0
-    moveY = 0
+    const zoom  = 0.5
+    const moveX = 0
+    const moveY = 0
+    const maxIter = 50
 
-    img = Array(UInt8, h, w, 3)
+    const img = Array(RGB{Float64}, h, w)
 
     for i in 1:n
 
-        maxIter = 50
-        c = Complex(-rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
+        const c = Complex(-rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
 
         for x in 1:w
             for y in 1:h
@@ -64,15 +60,13 @@ function generate(n::Int64)
                 while abs(z) < 2 && (i -= 1) > 0
                     z = z*z + c
                 end
-                r,g,b = hsv2rgb(i / maxIter * 360, 1, i > 0 ? 1 : 0)
-                img[y,x,1] = r
-                img[y,x,2] = g
-                img[y,x,3] = b
+                const r,g,b = hsv2rgb(i / maxIter * 360, 1, i > 0 ? 1 : 0)
+                img[y,x] = RGB{Float64}(r, g, b)
             end
         end
 
         println("Generating image...")
-        save("$c-$zoom.png", colorim(img, "RGB"))
+        save("$c-$zoom.png", img)
     end
 end
 
