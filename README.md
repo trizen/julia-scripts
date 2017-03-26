@@ -5,20 +5,20 @@ Small programs written in Julia.
 # Summary
 
 * Game solvers
-    * [Sudoku solver](./Game solvers/sudoku_solver.jl)
+    * [Sudoku solver](.%2FGame%20solvers%2Fsudoku_solver.jl)
 * Image
-    * [Julia sets](./Image/julia_sets.jl)
-    * [Mandelbrot like set](./Image/mandelbrot_like_set.jl)
-    * [Mandelbrot set](./Image/mandelbrot_set.jl)
+    * [Julia sets](.%2FImage%2Fjulia_sets.jl)
+    * [Mandelbrot like set](.%2FImage%2Fmandelbrot_like_set.jl)
+    * [Mandelbrot set](.%2FImage%2Fmandelbrot_set.jl)
 * Math
-    * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
-    * [Count partitions](./Math/count_partitions.jl)
-    * [Count partitions rec](./Math/count_partitions_rec.jl)
-    * [Euler totient function](./Math/euler_totient_function.jl)
-    * [Modular factorial](./Math/modular_factorial.jl)
-    * [Modular fibonacci](./Math/modular_fibonacci.jl)
-    * [Modular hyperoperation](./Math/modular_hyperoperation.jl)
-    * [Sigma function](./Math/sigma_function.jl)
-    * [Smarandache function](./Math/smarandache_function.jl)
+    * [Bernoulli numbers seidel](.%2FMath%2Fbernoulli_numbers_seidel.jl)
+    * [Count partitions](.%2FMath%2Fcount_partitions.jl)
+    * [Count partitions rec](.%2FMath%2Fcount_partitions_rec.jl)
+    * [Euler totient function](.%2FMath%2Feuler_totient_function.jl)
+    * [Modular factorial](.%2FMath%2Fmodular_factorial.jl)
+    * [Modular fibonacci](.%2FMath%2Fmodular_fibonacci.jl)
+    * [Modular hyperoperation](.%2FMath%2Fmodular_hyperoperation.jl)
+    * [Sigma function](.%2FMath%2Fsigma_function.jl)
+    * [Smarandache function](.%2FMath%2Fsmarandache_function.jl)
 * Text
-    * [Smart word wrap](./Text/smart_word_wrap.jl)
+    * [Smart word wrap](.%2FText%2Fsmart_word_wrap.jl)
