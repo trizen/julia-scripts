@@ -53,7 +53,7 @@ function mandelbrot()
     const L = 100           # the maximum value of |z|
     const I = 30            # the maximum number of iterations
 
-    const img = Array(RGB{Float64}, h, w)
+    const img = Array{RGB{Float64}}(h, w)
 
     for x in 1:w
         for y in 1:h

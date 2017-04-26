@@ -44,7 +44,7 @@ function generate(n::Int64)
     const moveY = 0
     const maxIter = 50
 
-    const img = Array(RGB{Float64}, h, w)
+    const img = Array{RGB{Float64}}(h, w)
 
     for i in 1:n
 

@@ -43,7 +43,7 @@ function mandelbrot()
     const moveX = 0
     const moveY = 0
 
-    const img = Array(RGB{Float64}, h, w)
+    const img = Array{RGB{Float64}}(h, w)
     const maxIter = 100
 
     for x in 1:w
