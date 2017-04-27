@@ -78,15 +78,14 @@ function complex_transform(file)
                 continue
             end
 
-            new_x = convert(Int64, floor(new_x))
-            new_y = convert(Int64, floor(new_y))
+            new_x = round(Int64, new_x)
+            new_y = round(Int64, new_y)
 
             out_img[new_y,new_x] = img[y,x]
         end
     end
 
     return out_img
-
 end
 
 const file = length(ARGS) > 0 ? ARGS[1] : "input.png"
