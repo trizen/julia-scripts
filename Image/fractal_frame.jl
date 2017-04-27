@@ -5,14 +5,13 @@
 # Date: 27 April 2017
 # https://github.com/trizen
 
-# Complex transform of an image, by mapping each pixel position to a complex function.
+# Adds a Mandelbrot-like fractal frame around the edges of an image.
 
-# usage:
-#   julia complex_transform.jl [image]
+# Usage:
+#   julia fractal_frame.jl [image]
 
 using Images
 using FileIO
-#using SpecialFunctions
 
 function map_val(value, in_min, in_max, out_min, out_max)
     (value - in_min) * (out_max - out_min) / (in_max - in_min) + out_min
@@ -30,10 +29,20 @@ function complex_transform(file)
             (2 * y - height) / height
         )
 
-        # Complex function
-        z = (cos(z) + sin(z)*im) / im
+        ok = true
+        const c = z
 
-        (real(z), imag(z))
+        for i in 1:10
+
+            if (abs(z) > 2)
+                ok = false
+                break
+            end
+
+            z = z^5 + c
+        end
+
+        ok ? (real(c), imag(c)) : (Inf, Inf)
     end
 
     const matrix = zeros(height, width, 2)
@@ -48,16 +57,16 @@ function complex_transform(file)
             matrix[y,x,1] = new_x
             matrix[y,x,2] = new_y
 
-            if (new_x < min_x)
+            if (new_x < min_x && new_x != -Inf)
                 min_x = new_x
             end
-            if (new_y < min_y)
+            if (new_y < min_y && new_y != -Inf)
                 min_y = new_y
             end
-            if (new_x > max_x)
+            if (new_x > max_x && new_x != Inf)
                 max_x = new_x
             end
-            if (new_y > max_y)
+            if (new_y > max_y && new_y != Inf)
                 max_y = new_y
             end
         end
@@ -73,8 +82,7 @@ function complex_transform(file)
             new_x = map_val(matrix[y,x,1], min_x, max_x, 1, width)
             new_y = map_val(matrix[y,x,2], min_y, max_y, 1, height)
 
-            if (abs(new_x) == Inf || isnan(new_x) || abs(new_y) == Inf || isnan(new_y))
-                println("Skipping one pixel...")
+            if (abs(new_x) == Inf || abs(new_y) == Inf)
                 continue
             end
 
@@ -89,4 +97,4 @@ function complex_transform(file)
 end
 
 const file = length(ARGS) > 0 ? ARGS[1] : "input.png"
-save("complex_transform.png", complex_transform(file))
+save("fractal_frame.png", complex_transform(file))
