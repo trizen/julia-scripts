@@ -5,10 +5,11 @@
 # Date: 17 January 2017
 # https://github.com/trizen
 
-# Generates the Mandelbrot set.
+# Generates a Mandelbrot-like set.
 
 # See also:
 #   https://en.wikipedia.org/wiki/Mandelbrot_set
+#   https://trizenx.blogspot.ro/2017/01/mandelbrot-set.html
 
 using Images
 
@@ -63,8 +64,9 @@ function mandelbrot()
             )
             z = c
             n = 0
+            q = f(c)
             while (abs(z) < L && (n += 1) < I)
-                z = z^f(c)
+                z = z^q
             end
             const v = (I - n) / I
             const r,g,b = hsv2rgb(v*360, 1, v)
