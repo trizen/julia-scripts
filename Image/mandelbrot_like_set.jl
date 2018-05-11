@@ -75,7 +75,7 @@ function mandelbrot()
     end
 
     println("Generating image...")
-    save("$zoom.png", img)
+    save("mandelbrot_like_set.png", img)
 end
 
 mandelbrot()
