@@ -41,25 +41,23 @@ function complex_transform(file)
     min_x, min_y = (Inf, Inf)
     max_x, max_y = (-Inf, -Inf)
 
-    for y in 1:height
-        for x in 1:width
-            const (new_x, new_y) = transform(x, y)
+    for y in 1:height, x in 1:width
+        new_x, new_y = transform(x, y)
 
-            matrix[y,x,1] = new_x
-            matrix[y,x,2] = new_y
+        matrix[y,x,1] = new_x
+        matrix[y,x,2] = new_y
 
-            if (new_x < min_x)
-                min_x = new_x
-            end
-            if (new_y < min_y)
-                min_y = new_y
-            end
-            if (new_x > max_x)
-                max_x = new_x
-            end
-            if (new_y > max_y)
-                max_y = new_y
-            end
+        if (new_x < min_x)
+            min_x = new_x
+        end
+        if (new_y < min_y)
+            min_y = new_y
+        end
+        if (new_x > max_x)
+            max_x = new_x
+        end
+        if (new_y > max_y)
+            max_y = new_y
         end
     end
 
@@ -68,21 +66,24 @@ function complex_transform(file)
 
     const out_img = Array{RGB{N0f8}}(height, width)
 
-    for y in 1:height
-        for x in 1:width
-            new_x = map_val(matrix[y,x,1], min_x, max_x, 1, width)
-            new_y = map_val(matrix[y,x,2], min_y, max_y, 1, height)
+    for y in 1:height, x in 1:width
+        out_img[y,x] = RGB{N0f8}(0,0,0)
+    end
 
-            if (abs(new_x) == Inf || isnan(new_x) || abs(new_y) == Inf || isnan(new_y))
-                println("Skipping one pixel...")
-                continue
-            end
+    for y in 1:height, x in 1:width
 
-            new_x = round(Int64, new_x)
-            new_y = round(Int64, new_y)
+        new_x = map_val(matrix[y,x,1], min_x, max_x, 1, width)
+        new_y = map_val(matrix[y,x,2], min_y, max_y, 1, height)
 
-            out_img[new_y,new_x] = img[y,x]
+        if (abs(new_x) == Inf || isnan(new_x) || abs(new_y) == Inf || isnan(new_y))
+            println("Skipping one pixel...")
+            continue
         end
+
+        new_x = round(Int64, new_x)
+        new_y = round(Int64, new_y)
+
+        out_img[new_y,new_x] = img[y,x]
     end
 
     return out_img
