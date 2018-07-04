@@ -14,10 +14,9 @@ using Primes
 
 function divisor_sum(n, x=1)
     sigma = 1
-    f = factor(n)
-    for p in keys(f)
+    for (p,e) in factor(n)
         s = 1
-        for j in 1:f[p]
+        for j in 1:e
             s += p^(j*x)
         end
         sigma *= s
