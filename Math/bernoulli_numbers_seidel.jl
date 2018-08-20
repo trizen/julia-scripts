@@ -8,6 +8,7 @@
 # Algorithm from:
 #   http://oeis.org/wiki/User:Peter_Luschny/ComputationAndAsymptoticsOfBernoulliNumbers#Seidel
 
+using Printf
 const BONE = big"1"
 
 function bernoulli_seidel(n)

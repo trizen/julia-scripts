@@ -33,7 +33,7 @@ function solve_sudoku(callback::Function, grid::Array{Int64})
     (function solve()
         for i in 1:81
             if grid[i] == 0
-                t = Dict{Int64, Void}()
+                t = Dict{Int64, Nothing}()
 
                 for j in 1:81
                     if lookup[i,j]

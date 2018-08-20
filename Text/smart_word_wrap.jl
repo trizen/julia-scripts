@@ -24,7 +24,7 @@ function prepare_words(array, width, callback, depth=0)
              if word_len > width
                     len -= word_len
                     value = array[i]
-                    a = matchall(Regex(".{1,$width}"), value)
+                    a = collect((m.match for m = eachmatch(Regex(".{1,$width}"), value)))
                     splice!(array, i, map(x -> convert(String, x), a))
                     limit = length(array)
                     i -= 1
@@ -52,7 +52,7 @@ end
 # This function combines the
 # the parents with the childrens.
 function combine(root, path, block)
-    key = shift!(path)
+    key = popfirst!(path)
     for value in path
         push!(root, key)
         if isempty(value)

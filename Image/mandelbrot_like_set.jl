@@ -14,11 +14,11 @@
 using Images
 
 @inline function hsv2rgb(h, s, v)
-    const c = v * s
-    const x = c * (1 - abs(((h/60) % 2) - 1))
-    const m = v - c
+    c = v * s
+    x = c * (1 - abs(((h/60) % 2) - 1))
+    m = v - c
 
-    const r,g,b =
+    r,g,b =
         if h < 60
             (c, x, 0)
         elseif h < 120
@@ -45,20 +45,20 @@ end
 
 function mandelbrot()
 
-    const w, h = 1000, 1000
+    w, h = 1000, 1000
 
-    const zoom  = 1         # the zoom factor
-    const moveX = 0         # the amount of shift on the x axis
-    const moveY = 0         # the amount of shift on the y axis
+    zoom  = 1         # the zoom factor
+    moveX = 0         # the amount of shift on the x axis
+    moveY = 0         # the amount of shift on the y axis
 
-    const L = 100           # the maximum value of |z|
-    const I = 30            # the maximum number of iterations
+    L = 100           # the maximum value of |z|
+    I = 30            # the maximum number of iterations
 
-    const img = Array{RGB{Float64}}(h, w)
+    img = Array{RGB{Float64}}(h, w)
 
     for x in 1:w
         for y in 1:h
-            const c = Complex(
+            c = Complex(
                 (2*x - w) / (w * zoom) + moveX,
                 (2*y - h) / (h * zoom) + moveY
             )
@@ -68,8 +68,8 @@ function mandelbrot()
             while (abs(z) < L && (n += 1) < I)
                 z = z^q
             end
-            const v = (I - n) / I
-            const r,g,b = hsv2rgb(v*360, 1, v)
+            v = (I - n) / I
+            r,g,b = hsv2rgb(v*360, 1, v)
             img[y,x] = RGB{Float64}(r, g, b)
         end
     end

@@ -20,8 +20,8 @@ end
 
 function complex_transform(file)
 
-    const img = load(file)
-    const (height, width) = size(img)
+    img = load(file)
+    height, width = size(img)
 
     function transform(x, y)
 
@@ -36,7 +36,7 @@ function complex_transform(file)
         (real(z), imag(z))
     end
 
-    const matrix = zeros(height, width, 2)
+    matrix = zeros(height, width, 2)
 
     min_x, min_y = (Inf, Inf)
     max_x, max_y = (-Inf, -Inf)
@@ -64,7 +64,7 @@ function complex_transform(file)
     println("X: [$min_x, $max_x]")
     println("Y: [$min_y, $max_y]")
 
-    const out_img = Array{RGB{N0f8}}(height, width)
+    out_img = Array{RGB{N0f8}}(height, width)
 
     for y in 1:height, x in 1:width
         out_img[y,x] = RGB{N0f8}(0,0,0)

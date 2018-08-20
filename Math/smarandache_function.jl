@@ -69,17 +69,21 @@ end
 ## Tests
 #
 
-cache = Dict{Int64, Int64}()
+function test()
+    cache = Dict{Int64, Int64}()
 
-limit = 10^2
-sumS = 0
+    limit = 10^2
+    sumS = 0
 
-for k in 2:limit
-    sumS += smarandache(k, cache)
+    for k in 2:limit
+        sumS += smarandache(k, cache)
+    end
+
+    println("∑S(i) for 2 ≤ i ≤ $limit == $sumS")
+
+    if (limit == 100 && sumS != 2012)
+        warn("However that is incorrect! (expected: 2012)")
+    end
 end
 
-println("∑S(i) for 2 ≤ i ≤ $limit == $sumS")
-
-if (limit == 100 && sumS != 2012)
-    warn("However that is incorrect! (expected: 2012)")
-end
+test()
