@@ -1,15 +1,14 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
+# Author: Daniel "Trizen" Șuteu
 # License: GPLv3
-# Date: 17 January 2017
-# https://github.com/trizen
+# Date: 27 March 2016
+# Website: https://github.com/trizen
 
-# Generates the Mandelbrot set.
+# Generate a random Julia set as a PNG image.
 
 # See also:
-#   https://en.wikipedia.org/wiki/Mandelbrot_set
-#   https://trizenx.blogspot.ro/2017/01/mandelbrot-set.html
+#    https://en.wikipedia.org/wiki/Julia_set
 
 using Images
 
@@ -36,33 +35,36 @@ using Images
     (r + m), (b + m), (g + m)
 end
 
-function mandelbrot()
+function julia_set()
 
     w, h = 1000, 1000
 
-    zoom  = 0.5
-    moveX = 0
-    moveY = 0
+    zoom  = 0.5       # the zoom factor
+    moveX = 0         # the amount of shift on the x axis
+    moveY = 0         # the amount of shift on the y axis
+
+    L = 2             # the maximum value of |z|
+    I = 30            # the maximum number of iterations
 
     img = zeros(RGB{Float64}, h, w)
-    maxIter = 100
+    c = Complex(-rand(), 2 * rand() * (rand() < 0.5 ? 1 : -1))
 
     for x in 1:w, y in 1:h
-        i = maxIter
-        c = Complex(
+        n = 0
+        z = Complex(
             (2*x - w) / (w * zoom) + moveX,
             (2*y - h) / (h * zoom) + moveY
         )
-        z = c
-        while abs(z) < 2 && (i -= 1) > 0
+        while abs(z) < L && (n += 1) < I
             z = z^2 + c
         end
-        r,g,b = hsv2rgb(i / maxIter * 360, 1, i / maxIter)
+        v = (I - n) / I
+        r,g,b = hsv2rgb(v*360, 1, v)
         img[y,x] = RGB{Float64}(r, g, b)
     end
 
     println("Generating image...")
-    save("mandelbrot_set.png", img)
+    save("$c-$zoom.png", img)
 end
 
-mandelbrot()
+julia_set()

@@ -54,24 +54,22 @@ function mandelbrot()
     L = 100           # the maximum value of |z|
     I = 30            # the maximum number of iterations
 
-    img = Array{RGB{Float64}}(h, w)
+    img = zeros(RGB{Float64}, h, w)
 
-    for x in 1:w
-        for y in 1:h
-            c = Complex(
-                (2*x - w) / (w * zoom) + moveX,
-                (2*y - h) / (h * zoom) + moveY
-            )
-            z = c
-            n = 0
-            q = f(c)
-            while (abs(z) < L && (n += 1) < I)
-                z = z^q
-            end
-            v = (I - n) / I
-            r,g,b = hsv2rgb(v*360, 1, v)
-            img[y,x] = RGB{Float64}(r, g, b)
+    for x in 1:w, y in 1:h
+        c = Complex(
+            (2*x - w) / (w * zoom) + moveX,
+            (2*y - h) / (h * zoom) + moveY
+        )
+        z = c
+        n = 0
+        q = f(c)
+        while (abs(z) < L && (n += 1) < I)
+            z = z^q
         end
+        v = (I - n) / I
+        r,g,b = hsv2rgb(v*360, 1, v)
+        img[y,x] = RGB{Float64}(r, g, b)
     end
 
     println("Generating image...")

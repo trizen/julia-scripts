@@ -11,7 +11,6 @@
 #   julia complex_transform.jl [image]
 
 using Images
-using FileIO
 #using SpecialFunctions
 
 function map_val(value, in_min, in_max, out_min, out_max)
@@ -64,7 +63,7 @@ function complex_transform(file)
     println("X: [$min_x, $max_x]")
     println("Y: [$min_y, $max_y]")
 
-    out_img = Array{RGB{N0f8}}(height, width)
+    out_img = zeros(RGB{N0f8}, height, width)
 
     for y in 1:height, x in 1:width
         out_img[y,x] = RGB{N0f8}(0,0,0)
@@ -89,5 +88,5 @@ function complex_transform(file)
     return out_img
 end
 
-const file = length(ARGS) > 0 ? ARGS[1] : "input.png"
-save("complex_transform.png", complex_transform(file))
+inputfile = length(ARGS) > 0 ? ARGS[1] : "input.png"
+save("complex_transform.png", complex_transform(inputfile))

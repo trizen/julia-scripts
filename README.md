@@ -8,7 +8,7 @@ Small programs written in Julia.
     * [Sudoku solver](./Game%20solvers/sudoku_solver.jl)
 * Image
     * [Complex transform](./Image/complex_transform.jl)
-    * [Julia sets](./Image/julia_sets.jl)
+    * [Julia set](./Image/julia_set.jl)
     * [Mandelbrot like set](./Image/mandelbrot_like_set.jl)
     * [Mandelbrot set](./Image/mandelbrot_set.jl)
 * Math
