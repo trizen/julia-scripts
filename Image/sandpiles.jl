@@ -34,14 +34,25 @@ function topple(plane, nextplane, width, height)
     return nextplane
 end
 
+function contains_four(plane, width, height)
+
+    for y in 1:height, x in 1:width
+        if (plane[y,x] >= 4)
+            return true
+        end
+    end
+
+    return false
+end
+
 function sandpiles()
 
-    w, h = 100, 100
+    w, h = 240, 240
 
     plane = zeros(Int64, h, w)
     plane[div(h,2), div(w,2)] = 10^5
 
-    for n in 1:10^4
+    while (contains_four(plane, w, h))
         nextplane = zeros(Int64, h, w)
         plane = topple(plane, nextplane, w, h)
     end
