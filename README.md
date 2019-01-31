@@ -11,6 +11,7 @@ Small programs written in Julia.
     * [Julia set](./Image/julia_set.jl)
     * [Mandelbrot like set](./Image/mandelbrot_like_set.jl)
     * [Mandelbrot set](./Image/mandelbrot_set.jl)
+    * [Sandpiles](./Image/sandpiles.jl)
 * Math
     * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
     * [Count partitions](./Math/count_partitions.jl)
