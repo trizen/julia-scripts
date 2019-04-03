@@ -17,20 +17,19 @@ using Images
     x = c * (1 - abs(((h/60) % 2) - 1))
     m = v - c
 
-    r,g,b =
-        if h < 60
-            (c, x, 0)
-        elseif h < 120
-            (x, c, 0)
-        elseif h < 180
-            (0, c, x)
-        elseif h < 240
-            (0, x, c)
-        elseif h < 300
-            (x, 0, c)
-        else
-            (c, 0, x)
-        end
+    if h < 60
+        r,g,b = (c, x, 0)
+    elseif h < 120
+        r,g,b = (x, c, 0)
+    elseif h < 180
+        r,g,b = (0, c, x)
+    elseif h < 240
+        r,g,b = (0, x, c)
+    elseif h < 300
+        r,g,b = (x, 0, c)
+    else
+        r,g,b = (c, 0, x)
+    end
 
     (r + m), (b + m), (g + m)
 end
