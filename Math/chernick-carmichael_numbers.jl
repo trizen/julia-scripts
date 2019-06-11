@@ -15,12 +15,10 @@
 
 using Primes
 
-function primality_pretest(k::UInt64)
+function trial_pretest(k::UInt64)
 
-    if (
-        (k %  3)==0 || (k %  5)==0 || (k %  7)==0 || (k % 11)==0 ||
-        (k % 13)==0 || (k % 17)==0 || (k % 19)==0 || (k % 23)==0
-    )
+    if ((k %  3)==0 || (k %  5)==0 || (k %  7)==0 || (k % 11)==0 ||
+        (k % 13)==0 || (k % 17)==0 || (k % 19)==0 || (k % 23)==0)
         return (k <= 23)
     end
 
@@ -28,23 +26,29 @@ function primality_pretest(k::UInt64)
 end
 
 function gcd_pretest(k::UInt64)
-    (gcd(35224440615606707, k) == 1) || (k <= 67)
+
+    if (k <= 107)
+        return true
+    end
+
+    gcd(29*31*37*41*43*47*53*59*61*67, k) == 1 &&
+    gcd(71*73*79*83*89*97*101*103*107, k) == 1
 end
 
 function is_chernick(n::Int64, m::UInt64)
 
     t = 9*m
 
-    if (!primality_pretest(6*m + 1))
+    if (!trial_pretest(6*m + 1))
         return false
     end
 
-    if (!primality_pretest(12*m + 1))
+    if (!trial_pretest(12*m + 1))
         return false
     end
 
     for i in 1:n-2
-        if (!primality_pretest((t << i) + 1))
+        if (!trial_pretest((t << i) + 1))
             return false
         end
     end
@@ -87,25 +91,20 @@ function chernick_carmichael(n::Int64, m::UInt64)
     prod *= 12*m + 1
 
     for i in 1:n-2
-        prod *= ((9*m)<<i) + 1
+        prod *= ((big(9)*m)<<i) + 1
     end
 
     prod
 end
 
-function main()
+function cc_numbers(from, to)
 
-    for n in 3:10
+    for n in from:to
 
         multiplier = 1
 
-        if (n > 4)
-            multiplier = 1 << (n-4)
-        end
-
-        if (n > 5)
-            multiplier *= 5
-        end
+        if (n > 4) multiplier = 1 << (n-4) end
+        if (n > 5) multiplier *= 5 end
 
         m = UInt64(multiplier)
 
@@ -121,4 +120,4 @@ function main()
     end
 end
 
-main()
+cc_numbers(3, 10)
