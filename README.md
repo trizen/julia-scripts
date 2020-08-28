@@ -18,6 +18,7 @@ Small programs written in Julia.
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
     * [Euler totient function](./Math/euler_totient_function.jl)
+    * [Fermat pseudoprimes generation](./Math/fermat_pseudoprimes_generation.jl)
     * [Modular factorial](./Math/modular_factorial.jl)
     * [Modular fibonacci](./Math/modular_fibonacci.jl)
     * [Modular hyperoperation](./Math/modular_hyperoperation.jl)
