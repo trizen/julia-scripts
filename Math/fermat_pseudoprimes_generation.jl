@@ -38,7 +38,7 @@ function divisors(n)
     return d
 end
 
-function fermat_pseudoprimess(limit)
+function fermat_pseudoprimes(limit)
 
     table = Dict{Int64, Array{Int64}}()
 
@@ -65,4 +65,4 @@ function fermat_pseudoprimess(limit)
     return true
 end
 
-fermat_pseudoprimess(10^5)
+fermat_pseudoprimes(10^5)

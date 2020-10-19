@@ -15,6 +15,7 @@ Small programs written in Julia.
 * Math
     * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
     * [Chernick-carmichael numbers](./Math/chernick-carmichael_numbers.jl)
+    * [Continued fraction factorization method](./Math/continued_fraction_factorization_method.jl)
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
     * [Euler totient function](./Math/euler_totient_function.jl)
