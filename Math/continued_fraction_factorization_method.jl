@@ -139,7 +139,7 @@ function cffm(n, multiplier = 1)
             n >>= 1
         end
 
-        arr1 = [2 for i in 1:v]
+        arr1 = [big"2" for i in 1:v]
         arr2 = cffm(n)
 
         return append!(arr1, arr2)
