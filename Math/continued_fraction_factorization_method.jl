@@ -31,11 +31,11 @@ function issquarefree(n)
     return true
 end
 
-function next_multiplier(k)
+function next_multiplier(n, k)
 
     k += 2
 
-    while (!issquarefree(k))
+    while (!issquarefree(k) || gcd(k,n) != 1)
         k += 1
     end
 
@@ -232,7 +232,7 @@ function cffm(n, multiplier = 1)
 
         if (z == 1)
             println("z == 1 -> trying again with a multiplier...")
-            return cffm(n, next_multiplier(multiplier))
+            return cffm(n, next_multiplier(n, multiplier))
         end
     end
 
@@ -305,7 +305,7 @@ function cffm(n, multiplier = 1)
     # Failed to factorize n (try again with a multiplier)
     if (remainder == n)
         println("Trying again with a multiplier...")
-        return cffm(n, next_multiplier(multiplier))
+        return cffm(n, next_multiplier(n, multiplier))
     end
 
     # Return all prime factors of n
