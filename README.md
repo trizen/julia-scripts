@@ -18,6 +18,7 @@ Small programs written in Julia.
     * [Continued fraction factorization method](./Math/continued_fraction_factorization_method.jl)
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
+    * [Divisors](./Math/divisors.jl)
     * [Elliptic-curve factorization method](./Math/elliptic-curve_factorization_method.jl)
     * [Euler totient function](./Math/euler_totient_function.jl)
     * [Fermat pseudoprimes generation](./Math/fermat_pseudoprimes_generation.jl)
