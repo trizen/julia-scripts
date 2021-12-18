@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 17 September 2016
-# Website: https://github.com/trizen
+# Trizen
+# 17 September 2016
+# https://github.com/trizen
 
 # A decently efficient algorithm for computing the results of the Kempner/Smarandache function.
 

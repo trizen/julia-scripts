@@ -1,9 +1,5 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# Date: 19 October 2020
-# https://github.com/trizen
-
 # A simple implementation of the continued fraction factorization method.
 # (variation of the Brillhart-Morrison algorithm).
 

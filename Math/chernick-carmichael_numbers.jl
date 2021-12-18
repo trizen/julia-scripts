@@ -1,6 +1,6 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
+# Trizen
 # Date: 11 June 2019
 # https://github.com/trizen
 

@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Author: Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 27 March 2016
-# Website: https://github.com/trizen
+# Trizen
+# 27 March 2016
+# https://github.com/trizen
 
 # Generate a random Julia set as a PNG image.
 

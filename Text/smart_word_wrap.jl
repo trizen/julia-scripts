@@ -1,7 +1,6 @@
 #!/usr/bin/julia
 
-# Author: Daniel "Trizen" Șuteu
-# License: GPLv3
+# Trizen
 # Date: 15th October 2013
 # https://github.com/trizen
 # https://trizenx.blogspot.ro/2013/11/smart-word-wrap.html

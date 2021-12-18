@@ -1,7 +1,6 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
+# Trizen
 # Date: 08 February 2017
 # https://github.com/trizen
 

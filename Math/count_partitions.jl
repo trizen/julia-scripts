@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Author: Daniel "Trizen" Șuteu
-# License: GPLv3
+# Trizen
 # Date: 18 August 2016
-# Website: https://github.com/trizen
+# https://github.com/trizen
 
 # Count the number of partitions of n.
 

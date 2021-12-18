@@ -1,8 +1,7 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 27 April 2017
+# Trizen
+# 27 April 2017
 # https://github.com/trizen
 
 # Complex transform of an image, by mapping each pixel position to a complex function.

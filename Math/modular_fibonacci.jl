@@ -1,7 +1,7 @@
 #!/usr/bin/julia
 
 # Date: 21 August 2016
-# Website: https://github.com/trizen
+# https://github.com/trizen
 
 # An efficient algorithm for computing large Fibonacci numbers, modulus some n.
 # Algorithm from: http://codeforces.com/blog/entry/14516

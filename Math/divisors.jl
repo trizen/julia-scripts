@@ -1,10 +1,10 @@
 #!/usr/bin/julia
 
-# Author: Trizen
-# Date: 28 August 2020
+# Trizen
+# 28 August 2020
 # https://github.com/trizen
 
-# Generate all the divisors of n.
+# Generate all the positive divisors of n.
 
 using Primes
 

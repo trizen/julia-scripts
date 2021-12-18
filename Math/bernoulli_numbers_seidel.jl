@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 14 October 2016
-# Website: https://github.com/trizen
+# Trizen
+# 14 October 2016
+# https://github.com/trizen
 
 # Algorithm from:
 #   http://oeis.org/wiki/User:Peter_Luschny/ComputationAndAsymptoticsOfBernoulliNumbers#Seidel

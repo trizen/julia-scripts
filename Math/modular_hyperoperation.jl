@@ -1,8 +1,7 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
+# Trizen
 # Date: 27 August 2016
-# License: GPLv3
 # https://github.com/trizen
 
 # Generalized implementation of Knuth's up-arrow hyperoperation (modulo some n).

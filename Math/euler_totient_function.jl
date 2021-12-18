@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 09 November 2016
-# Website: https://github.com/trizen
+# Trizen
+# 09 November 2016
+# https://github.com/trizen
 
 # A simple implementation of Euler's totient function.
 

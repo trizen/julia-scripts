@@ -1,9 +1,8 @@
 #!/usr/bin/julia
 
-# Author: Daniel "Trizen" Șuteu
+# Trizen
 # Date: 19 August 2016
-# License: GPLv3
-# Website: https://github.com/trizen
+# https://github.com/trizen
 
 # Count the number of partitions of n, using a recursive relation.
 

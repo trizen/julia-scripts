@@ -1,7 +1,7 @@
 #!/usr/bin/julia
 
-# Author: Trizen
-# Date: 15 November 2021
+# Trizen
+# 15 November 2021
 # https://github.com/trizen
 
 # Compute the multiplicative order of `a` modulo `n`: znorder(a, n).

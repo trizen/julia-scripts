@@ -1,9 +1,8 @@
 #!/usr/bin/perl
 
-# Author: Daniel "Trizen" Șuteu
-# License: GPLv3
+# Trizen
 # Date: 24 April 2015
-# Website: https://github.com/trizen
+# https://github.com/trizen
 
 # Add a given directory to a given section in SUMMARY.md (for gitbooks)
 

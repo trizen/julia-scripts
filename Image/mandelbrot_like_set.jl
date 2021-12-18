@@ -1,8 +1,7 @@
 #!/usr/bin/julia
 
-# Daniel "Trizen" Șuteu
-# License: GPLv3
-# Date: 17 January 2017
+# Trizen
+# 17 January 2017
 # https://github.com/trizen
 
 # Generates a Mandelbrot-like set.
