@@ -14,6 +14,7 @@ Small programs written in Julia.
     * [Sandpiles](./Image/sandpiles.jl)
 * Math
     * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
+    * [Carmichael numbers in range](./Math/carmichael_numbers_in_range.jl)
     * [Chernick-carmichael numbers](./Math/chernick-carmichael_numbers.jl)
     * [Continued fraction factorization method](./Math/continued_fraction_factorization_method.jl)
     * [Count partitions](./Math/count_partitions.jl)
@@ -22,11 +23,13 @@ Small programs written in Julia.
     * [Elliptic-curve factorization method](./Math/elliptic-curve_factorization_method.jl)
     * [Euler totient function](./Math/euler_totient_function.jl)
     * [Fermat pseudoprimes generation](./Math/fermat_pseudoprimes_generation.jl)
+    * [Lucas-carmichael numbers in range](./Math/lucas-carmichael_numbers_in_range.jl)
     * [Modular factorial](./Math/modular_factorial.jl)
     * [Modular fibonacci](./Math/modular_fibonacci.jl)
     * [Modular hyperoperation](./Math/modular_hyperoperation.jl)
     * [Multiplicative order](./Math/multiplicative_order.jl)
     * [Sigma function](./Math/sigma_function.jl)
     * [Smarandache function](./Math/smarandache_function.jl)
+    * [Squarefree fermat pseudoprimes in range](./Math/squarefree_fermat_pseudoprimes_in_range.jl)
 * Text
     * [Smart word wrap](./Text/smart_word_wrap.jl)
