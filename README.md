@@ -13,6 +13,7 @@ Small programs written in Julia.
     * [Mandelbrot set](./Image/mandelbrot_set.jl)
     * [Sandpiles](./Image/sandpiles.jl)
 * Math
+    * [Almost primes in range](./Math/almost_primes_in_range.jl)
     * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
     * [Carmichael numbers in range](./Math/carmichael_numbers_in_range.jl)
     * [Chernick-carmichael numbers](./Math/chernick-carmichael_numbers.jl)
@@ -28,8 +29,10 @@ Small programs written in Julia.
     * [Modular fibonacci](./Math/modular_fibonacci.jl)
     * [Modular hyperoperation](./Math/modular_hyperoperation.jl)
     * [Multiplicative order](./Math/multiplicative_order.jl)
+    * [Omega primes in range](./Math/omega_primes_in_range.jl)
     * [Sigma function](./Math/sigma_function.jl)
     * [Smarandache function](./Math/smarandache_function.jl)
+    * [Squarefree almost primes in range](./Math/squarefree_almost_primes_in_range.jl)
     * [Squarefree fermat pseudoprimes in range](./Math/squarefree_fermat_pseudoprimes_in_range.jl)
 * Text
     * [Smart word wrap](./Text/smart_word_wrap.jl)

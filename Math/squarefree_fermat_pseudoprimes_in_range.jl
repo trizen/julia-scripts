@@ -49,57 +49,46 @@ function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
 
     A = max(A, fld(prod(primes(prime(k+1))), 2))
 
-    F = function(m, lambda, p, k, u, v)
+    F = function(m, L, lo::Int64, k::Int64)
 
-        if (u > v)
+        hi = round(Int64, fld(B, m)^(1/k))
+
+        if (lo > hi)
             return nothing
         end
 
         if (k == 1)
 
-            p = nextprime(u)
+            lo = round(Int64, max(lo, cld(A, m)))
 
-            while (p <= v)
+            if (lo > hi)
+                return nothing
+            end
+
+            for p in primes(lo, hi)
                 t = m*p
-                if ((t-1) % lambda == 0 && (t-1) % prime_znorder(base, p) == 0)
+                if ((t-1) % L == 0 && (t-1) % prime_znorder(base, p) == 0)
                     callback(t)
                 end
-                p = nextprime(p+1)
             end
 
             return nothing
         end
 
-        s = round(Int64, fld(B, m)^(1/k))
-
-        while (p <= s)
-
-            r = nextprime(p+1)
+        for p in primes(lo, hi)
 
             if (base % p != 0)
 
-                L = lcm(lambda, prime_znorder(base, p))
+                t = lcm(L, prime_znorder(base, p))
 
-                if (gcd(L, m) == 1)
-
-                    t = m*p
-                    u = cld(A, t)
-                    v = fld(B, t)
-
-                    if (u <= v)
-                        if (k == 2 && r > u)
-                            u = r
-                        end
-                        F(t, L, r, k - 1, u, v)
-                    end
+                if (gcd(t, m) == 1)
+                    F(m*p, t, p+1, k-1)
                 end
             end
-
-            p = r
         end
     end
 
-    F(1, 1, 3, k, 1, 1)
+    F(1, 1, 3, k)
 end
 
 # Generate all the 6-Fermat pseudoprimes to base 2 in the range [100, 10^9]
