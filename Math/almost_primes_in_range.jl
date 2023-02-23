@@ -7,9 +7,11 @@
 
 using Primes
 
+const BIG = false       # true to use big integers
+
 function almost_primes_in_range(A, B, n::Int64)
 
-    A = max(A, (big"2")^n)
+    A = max(A, (BIG ? big"2" : 2)^n)
 
     F = function(m, lo::Int64, j::Int64)
 
@@ -40,7 +42,7 @@ function almost_primes_in_range(A, B, n::Int64)
         return lst
     end
 
-    return sort(F(big"1", 2, n))
+    return sort(F((BIG ? big"1" : 1), 2, n))
 end
 
 # Generate 5-almost in the range [300, 1000]

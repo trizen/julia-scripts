@@ -15,9 +15,20 @@
 
 using Primes
 
+const BIG = false       # true to use big integers
+
+function big_prod(arr)
+    BIG || return prod(arr)
+    r = big"1"
+    for n in (arr)
+        r *= n
+    end
+    return r
+end
+
 function lucas_carmichael_numbers_in_range(A, B, k, callback)
 
-    A = max(A, fld(prod(primes(prime(k+1))), 2))
+    A = max(A, fld(big_prod(primes(prime(k+1))), 2))
 
     F = function(m, L, lo, k)
 
@@ -30,31 +41,35 @@ function lucas_carmichael_numbers_in_range(A, B, k, callback)
         if (k == 1)
 
             lo = round(Int64, max(lo, cld(A, m)))
+            lo > hi && return nothing
 
-            if (lo > hi)
-                return nothing
+            t = L - invmod(m, L)
+            t > hi && return nothing
+
+            while (t < lo)
+                t += L
             end
 
-            for p in (primes(lo, hi))
-                t = m*p
-                if ((t+1) % L == 0 && (t+1) % (p+1) == 0)
-                    callback(t)
+            for p in t:L:hi
+                if (isprime(p))
+                    n = m*p
+                    if ((n+1) % (p+1) == 0)
+                        callback(n)
+                    end
                 end
             end
 
             return nothing
         end
 
-        for p in (primes(lo, hi))
-            t = lcm(L, p+1)
-
-            if (gcd(t, m) == 1)
-                F(m*p, t, p+1, k-1)
+        for p in primes(lo, hi)
+            if (gcd(m, p+1) == 1)
+                F(m*p, lcm(L, p+1), p+1, k-1)
             end
         end
     end
 
-    F(1, 1, 3, k)
+    F((BIG ? big"1" : 1), (BIG ? big"1" : 1), 3, k)
 end
 
 # Generate all the 6-Lucas-Carmichael numbers in the range [100, 10^10]

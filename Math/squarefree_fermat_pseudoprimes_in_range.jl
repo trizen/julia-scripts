@@ -15,6 +15,8 @@
 
 using Primes
 
+const BIG = false    # true to use big integers
+
 function divisors(n)
 
     d = Int64[1]
@@ -45,9 +47,18 @@ function prime_znorder(a, n)
     end
 end
 
+function big_prod(arr)
+    BIG || return prod(arr)
+    r = big"1"
+    for n in (arr)
+        r *= n
+    end
+    return r
+end
+
 function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
 
-    A = max(A, fld(prod(primes(prime(k+1))), 2))
+    A = max(A, big_prod(primes(prime(k))))
 
     F = function(m, L, lo::Int64, k::Int64)
 
@@ -60,15 +71,21 @@ function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
         if (k == 1)
 
             lo = round(Int64, max(lo, cld(A, m)))
+            lo > hi && return nothing
 
-            if (lo > hi)
-                return nothing
+            t = invmod(m, L)
+            t > hi && return nothing
+
+            while (t < lo)
+                t += L
             end
 
-            for p in primes(lo, hi)
-                t = m*p
-                if ((t-1) % L == 0 && (t-1) % prime_znorder(base, p) == 0)
-                    callback(t)
+            for p in t:L:hi
+                if (isprime(p))
+                    n = m*p
+                    if ((n-1) % prime_znorder(base, p) == 0)
+                        callback(n)
+                    end
                 end
             end
 
@@ -79,16 +96,16 @@ function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
 
             if (base % p != 0)
 
-                t = lcm(L, prime_znorder(base, p))
+                z = prime_znorder(base, p)
 
-                if (gcd(t, m) == 1)
-                    F(m*p, t, p+1, k-1)
+                if (gcd(m, z) == 1)
+                    F(m*p, lcm(L, z), p+1, k-1)
                 end
             end
         end
     end
 
-    F(1, 1, 3, k)
+    F((BIG ? big"1" : 1), (BIG ? big"1" : 1), 2, k)
 end
 
 # Generate all the 6-Fermat pseudoprimes to base 2 in the range [100, 10^9]

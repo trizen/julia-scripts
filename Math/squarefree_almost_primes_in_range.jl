@@ -7,7 +7,10 @@
 
 using Primes
 
+const BIG = false       # true to use big integers
+
 function big_prod(arr)
+    BIG || return prod(arr)
     r = big"1"
     for n in (arr)
         r *= n
@@ -48,7 +51,7 @@ function squarefree_almost_primes_in_range(A, B, n::Int64)
         return lst
     end
 
-    return sort(F(big"1",2,n))
+    return sort(F((BIG ? big"1" : 1),2,n))
 end
 
 # Generate squarefree 5-almost in the range [3000, 10000]

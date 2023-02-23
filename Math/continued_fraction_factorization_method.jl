@@ -260,6 +260,8 @@ function cffm(n, multiplier = 1)
                 X *= Q[i+1][1]
                 Y *= Q[i+1][2]
 
+                X %= remainder
+
                 g = gcd(X - isqrt(Y), remainder)
 
                 if (g > 1 && g < remainder)
