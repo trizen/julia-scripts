@@ -24,6 +24,7 @@ Small programs written in Julia.
     * [Elliptic-curve factorization method](./Math/elliptic-curve_factorization_method.jl)
     * [Euler totient function](./Math/euler_totient_function.jl)
     * [Fermat pseudoprimes generation](./Math/fermat_pseudoprimes_generation.jl)
+    * [Fermat pseudoprimes in range](./Math/fermat_pseudoprimes_in_range.jl)
     * [Lucas-carmichael numbers in range](./Math/lucas-carmichael_numbers_in_range.jl)
     * [Modular factorial](./Math/modular_factorial.jl)
     * [Modular fibonacci](./Math/modular_fibonacci.jl)
@@ -34,5 +35,6 @@ Small programs written in Julia.
     * [Smarandache function](./Math/smarandache_function.jl)
     * [Squarefree almost primes in range](./Math/squarefree_almost_primes_in_range.jl)
     * [Squarefree fermat pseudoprimes in range](./Math/squarefree_fermat_pseudoprimes_in_range.jl)
+    * [Strong fermat pseudoprimes in range](./Math/strong_fermat_pseudoprimes_in_range.jl)
 * Text
     * [Smart word wrap](./Text/smart_word_wrap.jl)

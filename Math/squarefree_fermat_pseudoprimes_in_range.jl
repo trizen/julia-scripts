@@ -81,7 +81,7 @@ function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
             end
 
             for p in t:L:hi
-                if (isprime(p))
+                if (isprime(p) && base%p != 0)
                     n = m*p
                     if ((n-1) % prime_znorder(base, p) == 0)
                         callback(n)
