@@ -18,6 +18,7 @@ Small programs written in Julia.
     * [Carmichael numbers in range](./Math/carmichael_numbers_in_range.jl)
     * [Chernick-carmichael numbers](./Math/chernick-carmichael_numbers.jl)
     * [Continued fraction factorization method](./Math/continued_fraction_factorization_method.jl)
+    * [Continued fraction factorization method nemo](./Math/continued_fraction_factorization_method_nemo.jl)
     * [Count partitions](./Math/count_partitions.jl)
     * [Count partitions rec](./Math/count_partitions_rec.jl)
     * [Divisors](./Math/divisors.jl)
