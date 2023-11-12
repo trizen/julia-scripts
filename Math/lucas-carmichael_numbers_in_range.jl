@@ -30,9 +30,12 @@ function lucas_carmichael_numbers_in_range(A, B, k, callback)
 
     A = max(A, fld(big_prod(primes(prime(k+1))), 2))
 
+    # Largest possible factor of Lucas-Carmichael numbers <= B
+    max_p = isqrt(B)
+
     F = function(m, L, lo, k)
 
-        hi = round(Int64, fld(B, m)^(1/k))
+        hi = min(max_p, round(Int64, fld(B, m)^(1/k)))
 
         if (lo > hi)
             return nothing
