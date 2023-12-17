@@ -15,6 +15,7 @@ Small programs written in Julia.
 * Math
     * [Almost primes in range](./Math/almost_primes_in_range.jl)
     * [Bernoulli numbers seidel](./Math/bernoulli_numbers_seidel.jl)
+    * [Both truncatable primes in base](./Math/both_truncatable_primes_in_base.jl)
     * [Carmichael numbers in range](./Math/carmichael_numbers_in_range.jl)
     * [Chernick-carmichael numbers](./Math/chernick-carmichael_numbers.jl)
     * [Continued fraction factorization method](./Math/continued_fraction_factorization_method.jl)
