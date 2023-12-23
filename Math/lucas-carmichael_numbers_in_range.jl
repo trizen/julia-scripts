@@ -19,23 +19,29 @@ const BIG = false       # true to use big integers
 
 function big_prod(arr)
     BIG || return prod(arr)
-    r = big"1"
+    r = big(1)
     for n in (arr)
         r *= n
     end
     return r
 end
 
-function lucas_carmichael_numbers_in_range(A, B, k, callback)
+function lucas_carmichael_numbers_in_range(A, B, k)
 
     A = max(A, fld(big_prod(primes(prime(k+1))), 2))
 
     # Largest possible factor of Lucas-Carmichael numbers <= B
+    # Proof: By the Chinese Remainder Theorem, if n is a Lucas-Carmichael number, then
+    #               n == p (mod p*(p+1)), where p is a prime factor of n,
+    #        therefore `n = p + j*p*(p+1)` for some `j >= 1`,
+    #        where for `j=1` we have `p^2 + 2*p <= n`, hence `p <= sqrt(n+1)-1`.
     max_p = isqrt(B)
+
+    terms = []
 
     F = function(m, L, lo, k)
 
-        hi = min(max_p, round(Int64, fld(B, m)^(1/k)))
+        hi = round(Int64, fld(B, m)^(1/k))
 
         if (lo > hi)
             return nothing
@@ -43,6 +49,7 @@ function lucas_carmichael_numbers_in_range(A, B, k, callback)
 
         if (k == 1)
 
+            hi = min(hi, max_p)
             lo = round(Int64, max(lo, cld(A, m)))
             lo > hi && return nothing
 
@@ -57,7 +64,7 @@ function lucas_carmichael_numbers_in_range(A, B, k, callback)
                 if (isprime(p))
                     n = m*p
                     if ((n+1) % (p+1) == 0)
-                        callback(n)
+                        push!(terms, n)
                     end
                 end
             end
@@ -72,8 +79,30 @@ function lucas_carmichael_numbers_in_range(A, B, k, callback)
         end
     end
 
-    F((BIG ? big"1" : 1), (BIG ? big"1" : 1), 3, k)
+    F((BIG ? big(1) : 1), (BIG ? big(1) : 1), 3, k)
+
+    return sort(terms)
 end
+
+# Generate all the Carmichael numbers in range [A,B]
+function lucas_carmichael(A, B)
+    k = 3
+    terms = []
+    while true
+
+        # Stop when the lower-bound (`primorial(prime(k+1))/2`)  is greater than the upper-limit
+        if (big_prod(primes(prime(k+1)))/2 > B)
+            break
+        end
+
+        append!(terms, lucas_carmichael_numbers_in_range(A, B, k))
+        k += 1
+    end
+    return sort(terms)
+end
+
+println("=> Lucas-Carmichael numbers <= 10^6:")
+println(lucas_carmichael(1, 10^6));
 
 # Generate all the 6-Lucas-Carmichael numbers in the range [100, 10^10]
 
@@ -81,8 +110,7 @@ k    = 6
 from = 100
 upto = 10^10
 
-arr = []
-lucas_carmichael_numbers_in_range(from, upto, k, function (n) push!(arr, n) end)
+arr = lucas_carmichael_numbers_in_range(from, upto, k)
 
-sort!(arr)
+println("\n=> Lucas-Carmichael numbers with $k prime factors in range [$from, $upto]:")
 println(arr)
