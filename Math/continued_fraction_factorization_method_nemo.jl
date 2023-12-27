@@ -20,7 +20,7 @@ function next_multiplier(n, k)
 
     k += 2
 
-    while (!issquarefree(k) || gcd(k,n) != 1)
+    while (!is_squarefree(k) || gcd(k,n) != 1)
         k += 1
     end
 
@@ -119,7 +119,7 @@ function cffm(n, multiplier = 1)
         return append!(arr1, arr2)
     end
 
-    if (issquare(n))
+    if (is_square(n))
         f = cffm(isqrt(n))
         append!(f, f)
         return sort(f)
@@ -180,7 +180,7 @@ function cffm(n, multiplier = 1)
 
         (f1, f2) = (f2, rem((r*f2 + f1), n))
 
-        if (issquare(z))
+        if (is_square(z))
             g = gcd(f1 - isqrt(z), n)
 
             if (g > 1 && g < n)

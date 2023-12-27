@@ -56,16 +56,15 @@ function lucas_carmichael_numbers_in_range(A, B, k)
             t = L - invmod(m, L)
             t > hi && return nothing
 
-            while (t < lo)
-                t += L
+            if (t < lo)
+                t += L*cld(lo - t, L)
             end
 
+            t > hi && return nothing
+
             for p in t:L:hi
-                if (isprime(p))
-                    n = m*p
-                    if ((n+1) % (p+1) == 0)
-                        push!(terms, n)
-                    end
+                if ((m*p + 1) % (p+1) == 0 && isprime(p))
+                    push!(terms, m*p)
                 end
             end
 

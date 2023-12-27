@@ -123,9 +123,11 @@ function fermat_pseudoprimes_in_range(A, B, k, base, callback)
             t = invmod(m, L)
             t > hi && return nothing
 
-            while (t < lo)
-                t += L
+            if (t < lo)
+                t += L*cld(lo - t, L)
             end
+
+            t > hi && return nothing
 
             for p in t:L:hi
                 if (isprimepower(p) && gcd(m, p) == 1 && gcd(base, p) == 1)

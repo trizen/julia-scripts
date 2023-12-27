@@ -76,15 +76,16 @@ function squarefree_fermat_pseudoprimes_in_range(A, B, k, base, callback)
             t = invmod(m, L)
             t > hi && return nothing
 
-            while (t < lo)
-                t += L
+            if (t < lo)
+                t += L*cld(lo - t, L)
             end
+
+            t > hi && return nothing
 
             for p in t:L:hi
                 if (isprime(p) && base%p != 0)
-                    n = m*p
-                    if ((n-1) % prime_znorder(base, p) == 0)
-                        callback(n)
+                    if ((m*p - 1) % prime_znorder(base, p) == 0)
+                        callback(m*p)
                     end
                 end
             end
