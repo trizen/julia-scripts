@@ -8,7 +8,7 @@
 
 # See also:
 #   https://en.wikipedia.org/wiki/Mandelbrot_set
-#   https://trizenx.blogspot.ro/2017/01/mandelbrot-set.html
+#   https://trizenx.blogspot.com/2017/01/mandelbrot-set.html
 
 using Images
 

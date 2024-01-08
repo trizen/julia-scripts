@@ -5,7 +5,7 @@
 # https://github.com/trizen
 
 # Algorithm from:
-#   http://oeis.org/wiki/User:Peter_Luschny/ComputationAndAsymptoticsOfBernoulliNumbers#Seidel
+#   https://oeis.org/wiki/User:Peter_Luschny/ComputationAndAsymptoticsOfBernoulliNumbers#Seidel
 
 using Printf
 const BONE = big"1"

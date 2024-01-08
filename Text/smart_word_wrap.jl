@@ -3,7 +3,7 @@
 # Trizen
 # Date: 15th October 2013
 # https://github.com/trizen
-# https://trizenx.blogspot.ro/2013/11/smart-word-wrap.html
+# https://trizenx.blogspot.com/2013/11/smart-word-wrap.html
 
 # Smart word wrap algorithm
 # See: https://en.wikipedia.org/wiki/Word_wrap#Minimum_raggedness

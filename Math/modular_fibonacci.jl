@@ -4,7 +4,7 @@
 # https://github.com/trizen
 
 # An efficient algorithm for computing large Fibonacci numbers, modulus some n.
-# Algorithm from: http://codeforces.com/blog/entry/14516
+# Algorithm from: https://codeforces.com/blog/entry/14516
 
 function fibmod(n::Int64, mod::Int64)
 
