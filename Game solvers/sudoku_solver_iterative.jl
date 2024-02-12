@@ -39,9 +39,34 @@ function find_empty_locations(board)
     return positions
 end
 
-function solve_sudoku(board)
+function solve_sudoku_fallback(board)    # fallback method
 
-    prev_len = 0
+    stack = [board]
+
+    while length(stack) >= 1
+
+        current_board   = pop!(stack)
+        empty_locations = find_empty_locations(current_board)
+
+        if length(empty_locations) == 0
+            return current_board    # solved
+        end
+
+        row, col = pop!(empty_locations)
+
+        for num in 1:9
+            if is_valid(current_board, row, col, num)
+                new_board = deepcopy(current_board)
+                new_board[row][col] = num
+                push!(stack, new_board)
+            end
+        end
+    end
+
+    return nothing
+end
+
+function solve_sudoku(board)
 
     while true
 
@@ -51,10 +76,9 @@ function solve_sudoku(board)
             break   # it's solved
         end
 
-        if length(empty_locations) == prev_len
-            return nothing   # stuck
-        end
+        found = false
 
+        # Solve easy cases
         for (i,j) in empty_locations
             count = 0
             value = 0
@@ -67,10 +91,63 @@ function solve_sudoku(board)
             end
             if count == 1
                 board[i][j] = value
+                found = true
             end
         end
 
-        prev_len = length(empty_locations)
+        found && continue
+
+        # Solve more complex cases
+        stats = Dict{String,Array}()
+        for (i,j) in empty_locations
+            arr = []
+            for n in 1:9
+                if is_valid(board, i, j, n)
+                    append!(arr, n)
+                end
+            end
+            stats["$i $j"] = arr
+        end
+
+        cols = Dict{String,Int}()
+        rows = Dict{String,Int}()
+
+        for (i,j) in empty_locations
+            for v in stats["$i $j"]
+
+                k1 = "$j $v"
+                k2 = "$i $v"
+
+                if !haskey(cols, k1)
+                    cols[k1] = 1
+                else
+                    cols[k1] += 1
+                end
+
+                if !haskey(rows, k2)
+                    rows[k2] = 1
+                else
+                    rows[k2] += 1
+                end
+            end
+        end
+
+        for (i,j) in empty_locations
+            for v in stats["$i $j"]
+                if (cols["$j $v"] == 1)
+                    board[i][j] = v
+                    found = true
+                elseif (rows["$i $v"] == 1)
+                    board[i][j] = v
+                    found = true
+                end
+            end
+        end
+
+        found && continue
+
+        # Give up and try brute-force
+        return solve_sudoku_fallback(board)
     end
 
     return board
@@ -79,15 +156,15 @@ end
 # Example usage:
 # Define the Sudoku puzzle as a 9x9 list with 0 representing empty cells
 sudoku_board = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
+        [2, 0, 0, 0, 7, 0, 0, 0, 3],
+        [1, 0, 0, 0, 0, 0, 0, 8, 0],
+        [0, 0, 4, 2, 0, 9, 0, 0, 5],
+        [9, 4, 0, 0, 0, 0, 6, 0, 8],
+        [0, 0, 0, 8, 0, 0, 0, 9, 0],
+        [0, 0, 0, 0, 0, 0, 0, 7, 0],
+        [7, 2, 1, 9, 0, 8, 0, 6, 0],
+        [0, 3, 0, 0, 2, 7, 1, 0, 0],
+        [4, 0, 0, 0, 0, 3, 0, 0, 0]
 ]
 
 solution = solve_sudoku(sudoku_board)
