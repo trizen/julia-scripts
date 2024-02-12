@@ -6,6 +6,8 @@ Small programs written in Julia.
 
 * Game solvers
     * [Sudoku solver](./Game%20solvers/sudoku_solver.jl)
+    * [Sudoku solver backtracking](./Game%20solvers/sudoku_solver_backtracking.jl)
+    * [Sudoku solver iterative](./Game%20solvers/sudoku_solver_iterative.jl)
 * Image
     * [Complex transform](./Image/complex_transform.jl)
     * [Julia set](./Image/julia_set.jl)
