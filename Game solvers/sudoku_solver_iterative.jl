@@ -39,31 +39,42 @@ function find_empty_locations(board)
     return positions
 end
 
-function solve_sudoku_fallback(board)    # fallback method
+function find_empty_location(board)
 
-    stack = [board]
-
-    while length(stack) >= 1
-
-        current_board   = pop!(stack)
-        empty_locations = find_empty_locations(current_board)
-
-        if length(empty_locations) == 0
-            return current_board    # solved
-        end
-
-        row, col = pop!(empty_locations)
-
-        for num in 1:9
-            if is_valid(current_board, row, col, num)
-                new_board = deepcopy(current_board)
-                new_board[row][col] = num
-                push!(stack, new_board)
-            end
+    # Find an empty positions (cell with 0)
+    for i in 1:9, j in 1:9
+        if board[i][j] == 0
+            return [i,j]
         end
     end
 
-    return nothing
+    return (nothing, nothing)
+end
+
+function solve_sudoku_fallback(board)
+
+    row, col = find_empty_location(board)
+
+    if (row == nothing && col == nothing)
+        return true  # Puzzle is solved
+    end
+
+    for num in 1:9
+        if is_valid(board, row, col, num)
+            # Try placing the number
+            board[row][col] = num
+
+            # Recursively try to solve the rest of the puzzle
+            if solve_sudoku_fallback(board)
+                return true
+            end
+
+            # If placing the current number doesn't lead to a solution, backtrack
+            board[row][col] = 0
+        end
+    end
+
+    return false  # No solution found
 end
 
 function solve_sudoku(board)
@@ -147,7 +158,8 @@ function solve_sudoku(board)
         found && continue
 
         # Give up and try brute-force
-        return solve_sudoku_fallback(board)
+        solve_sudoku_fallback(board)
+        return board
     end
 
     return board
