@@ -71,7 +71,7 @@ function check_factor(n, g, factors)
         n = div(n,g)
         push!(factors, g)
 
-        if (isprime(n))
+        if (is_prime(n))
             push!(factors, n)
             return 1
         end
@@ -102,8 +102,8 @@ end
 
 function cffm(n, multiplier = 1)
 
-    n <= 1     && return []
-    isprime(n) && return [n]
+    n <= 1      && return []
+    is_prime(n) && return [n]
 
     if (iseven(n))
 
@@ -254,7 +254,7 @@ function cffm(n, multiplier = 1)
     final_factors = []
 
     for f in (factors)
-        if (isprime(f))
+        if (is_prime(f))
             push!(final_factors, f)
         else
             append!(final_factors, cffm(f))
