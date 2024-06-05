@@ -50,6 +50,10 @@ function remainders_for_primes(n, primes)
 
         rems = remaindersmodp(p, n)
 
+        if (length(rems) == 0)
+            rems = [0]
+        end
+
         nres = []
         for r in res
             a = r[1]
